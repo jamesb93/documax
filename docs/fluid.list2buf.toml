@@ -1,10 +1,10 @@
 object = "fluid.list2buf"
 buffer = false
-digest = "Copy A List To A Buffer"
+digest = "Copy a list to a buffer~"
 see-also =  ["fluid.buf2list"]
-description = "Copies the values of a list to a buffer."
+description = "Copies the values of a list to a buffer~."
 discussion = """
-fluid.list2buf copies the values of a list to a buffer.
+fluid.list2buf copies the values of a list to a buffer~.
 
 This is a convenient way of transforming data such that it can interface with other FluCoMa objects that expect to receive a buffer.
 
