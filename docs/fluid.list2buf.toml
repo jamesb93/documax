@@ -12,18 +12,42 @@ Be aware that if a buffer of a predefined size is not supplied as the output it 
 """
 
 [attributes]
-autosize = "Determines if the output buffer will be resized according to the size of the input list."
-axis = """
-Changes the orientation of the data that is copied. `axis 0` copies frame-wise into a single channel. `axis 1` will copy the list channel-wise resulting in as many channels as there are elements in the input list.
-"""
+[attributes.autosize]
+digest = "Determines if the output buffer will be resized according to the size of the input list."
+description=""
+type="int"
+size="1"
+value="1"
 
-destination = "The buffer~ to copy the list values to."
-startchan = "For multichannel output buffers, which which channel to begin copying to. The default is 0."
-startframe = "The starting index (in samples) from which to copy in the source buffer."
+[attributes.axis]
+digest = "Changes the orientation of the data that is copied. `axis 0` copies frame-wise into a single channel. `axis 1` will copy the list channel-wise resulting in as many channels as there are elements in the input list."
+description=""
+type="int"
+size="1"
+value="0"
+
+[attributes.destination]
+digest="The buffer~ to copy the list values to."
+description=""
+type="symbol"
+size="1"
+
+[attributes.startchan]
+digest="For multichannel output buffers, which which channel to begin copying to. The default is 0."
+description=""
+type="int"
+size="1"
+value="0"
+
+[attributes.startframe]
+digest="The starting index (in samples) from which to copy in the source buffer."
+description=""
+type="int"
+size="1"
+value="0"
 
 [messages]
 [messages.list]
-type = "list"
 digest = "The input list to be copied."
 
 
