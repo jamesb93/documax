@@ -2,7 +2,7 @@ object = "fluid.waveform~"
 buffer = false
 digest = "Visualise audio waveforms and data."
 see-also =  ["fluid.waveform~"]
-description = "A JSUI object for visualising waveforms, feature data, slices and spectrograms."
+description="A JSUI object for visualising waveforms, feature data, slices and spectrograms."
 discussion = """
 The fluid.waveform~ object is designed for visualising audio waveforms, feature data, slices and spectrograms. This is a convenient way to interrogate analysis, or visualise the results of processes.
 """
@@ -10,16 +10,42 @@ The fluid.waveform~ object is designed for visualising audio waveforms, feature 
 [messages]
 
 [messages.waveform]
-description = "Paint a waveform from a buffer."
+msgdesc="Paint a waveform from a buffer."
+args = [
+    { name="buffer", type="symbol", optional=0 },
+    { name="color", type="symbol", optional=1}
+]
+
 [messages.features]
-description = "Paint a feature curve from a buffer." 
+msgdesc="Paint a feature curve from a buffer."
+args = [
+    { name="buffer", type="symbol", optional=0 },
+    { name="color", type="symbol", optional=1}
+] 
+
 [messages.image]
-description = "Construct an image from a two-dimensional buffer~ of values."
+msgdesc="Construct an image from a two-dimensional buffer~ of values."
+args = [
+    { name="buffer", type="symbol", optional=0 }
+]
+
 [messages.slices]
-description = "Paint vertical slices stored in a buffer~ onto the waveform."
+msgdesc="Paint vertical slices stored in a buffer~ onto the waveform."
+args = [
+    { name="markers buffer", type="symbol", optional=0 },
+    { name="reference", type="symbol", optional=0 },
+]
+
 [messages.remove]
-description = "Remove a specific layer from the waveform."
+msgdesc="Remove a specific layer from the waveform."
+args = [
+    { name="layer", type="symbol", optional=0 }
+]
+
 [messages.clear]
-description = "Reset the state of the object."
+msgdesc="Reset the state of the object."
+args=[]
+
 [messages.bgcolor]
-description = "Set the background color."
+msgdesc="Set the background color."
+args=[]
