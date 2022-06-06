@@ -14,6 +14,10 @@ So far generates:
 
 This will transform the docs stored in the `docs` path to the output folder set in that script. By default is in this repo at `output`, but can be configured to go anywhere by changing that line in `parser.js`.
 
+Optionally you can supply the `-o` parameter to set the output folder. For example:
+
+`node parser.js -o help` would output all the transformed documentation to the folder named `help`. If it does not exist it will be made.
+
 # Explanation
 
 Documentation is described in [TOML](https://toml.io/en/) files in the `docs` folder. The name of the file should correspond to the name of the object.
