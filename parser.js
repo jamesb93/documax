@@ -4,9 +4,12 @@ const fs = require('fs');
 const path = require('path');
 const fg = require('fast-glob');
 const Mustache = require('mustache');
+const { program } = require('commander');
 
-const dir = './output';
-
+program.option('-o');
+program.parse()
+const options = program.opts();
+const dir = options.o ? program.args[0] : 'output';
 const sanitise = (data) => {
     // Messages
     let copy = data;
@@ -38,9 +41,7 @@ const configs = fg.sync(['docs/*.toml']);
 const template = fs.readFileSync('./template.mustache', 'utf8')
 Mustache.escape = (text) => text; // escape maxref tags
 
-if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir);
-}
+if (!fs.existsSync(dir)) { fs.mkdirSync(dir) };
 
 for (const config of configs) {
     const data = fs.readFileSync(config);
