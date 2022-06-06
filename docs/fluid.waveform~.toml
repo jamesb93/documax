@@ -1,0 +1,25 @@
+object = "fluid.waveform~"
+buffer = false
+digest = "Visualise audio waveforms and data."
+see-also =  ["fluid.waveform~"]
+description = "A JSUI object for visualising waveforms, feature data, slices and spectrograms."
+discussion = """
+The fluid.waveform~ object is designed for visualising audio waveforms, feature data, slices and spectrograms. This is a convenient way to interrogate analysis, or visualise the results of processes.
+"""
+
+[messages]
+
+[messages.waveform]
+description = "Paint a waveform from a buffer."
+[messages.features]
+description = "Paint a feature curve from a buffer." 
+[messages.image]
+description = "Construct an image from a two-dimensional buffer~ of values."
+[messages.slices]
+description = "Paint vertical slices stored in a buffer~ onto the waveform."
+[messages.remove]
+description = "Remove a specific layer from the waveform."
+[messages.clear]
+description = "Reset the state of the object."
+[messages.bgcolor]
+description = "Set the background color."

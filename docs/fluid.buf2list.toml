@@ -1,0 +1,55 @@
+object = "fluid.buf2list"
+buffer = true
+digest = "Copy the contents of a buffer~ to a list"
+see-also =  ["fluid.list2buf"]
+description = "A simplified workflow for extracting numerical data from buffers as lists of numbers."
+discussion = """
+Given a source buffer that is valid, fluid.buf2list copies its contents to a new list when it receives a bang.
+
+This is a convenient way of extracting data from a buffer to be used elsewhere.
+"""
+
+[attributes]
+[attributes.autosize]
+digest = "Determines if the output buffer will be resized according to the size of the input list."
+description = ""
+type = "int"
+value = "1"
+size = "1"
+
+[attributes.axis]
+digest = """
+Changes the orientation of the data that is copied. <m>axis 0</m> copies frame-wise into a single channel. <m>axis 1</m> will copy the list channel-wise resulting in as many channels as there are elements in the input list.
+"""
+description = ""
+type = "int"
+value = "0"
+size = "1"
+
+[attributes.destination]
+digest = "The buffer~ to copy the list values to."
+description = ""
+type = "symbol"
+size = "1"
+
+[attributes.startchan]
+digest = "For multichannel output buffers, which which channel to begin copying to. The default is 0."
+description = ""
+type = "int"
+size = "1"
+value = "0"
+
+[attributes.startframe]
+digest = "The starting index (in samples) from which to copy in the source buffer."
+description = ""
+type = "int"
+size = "1"
+value = "0"
+
+[messages]
+[messages.bang]
+digest="Copies the contents of the <m>buffer~</m> to the list."
+description=""
+args=[]
+
+
