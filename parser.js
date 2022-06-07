@@ -31,9 +31,27 @@ const sanitise = (data) => {
         }
     }
     // Inlets
+    let inlets = []
+    if (data.inlets) {
+        for (const [k, v] of Object.entries(data.inlets)) {
+            let inlet = v;
+            inlet.id = k;
+            inlets.push(inlet)
+        }
+    }
     // Outlets
+    let outlets = []
+    if (data.outlets) {
+        for (const [k, v] of Object.entries(data.outlets)) {
+            let outlet = v;
+            outlet.id = k;
+            outlets.push(outlet)
+        }
+    }
     copy.messages = messages
     copy.attributes = attributes
+    copy.inlets = inlets
+    copy.outlets = outlets
     return copy
 }
 
