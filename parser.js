@@ -30,6 +30,16 @@ const sanitise = (data) => {
             attributes.push(attr)
         }
     }
+
+    let arguments = []
+    if (data.arguments) {
+        for (const [k, v] of Object.entries(data.arguments)) {
+            let arg = v;
+            arg.name = k;
+            arguments.push(arg)
+        }
+    }
+
     // Inlets
     let inlets = []
     if (data.inlets) {
@@ -50,6 +60,7 @@ const sanitise = (data) => {
     }
     copy.messages = messages
     copy.attributes = attributes
+    copy.arguments = arguments
     copy.inlets = inlets
     copy.outlets = outlets
     return copy
