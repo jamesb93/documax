@@ -24,7 +24,7 @@ args = [
 ] 
 
 [messages.image]
-msgdesc="Construct an image from a two-dimensional buffer~ of values."
+msgdesc="Construct an image from a two-dimensional buffer~ of values, such as a spectrogram."
 args = [
     { name="buffer", type="symbol", optional=0 }
 ]
