@@ -9,6 +9,14 @@ Given a source buffer that is valid, fluid.buf2list copies its contents to a new
 This is a convenient way of extracting data from a buffer to be used elsewhere.
 """
 
+[arguments]
+[arguments.maxsize]
+optional="0"
+type="number"
+digest="Maximum list size"
+description="Sets a maximum size for the internal list. The absolute maximum in Max is 32767."
+default = { type="int", size="1", value="256" }
+
 [attributes]
 [attributes.autosize]
 digest = "Determines if the output buffer will be resized according to the size of the input list."
