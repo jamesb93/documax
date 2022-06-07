@@ -11,6 +11,14 @@ This is a convenient way of transforming data such that it can interface with ot
 Be aware that if a buffer of a predefined size is not supplied as the output it will defer the copying. If you need the copying to occur in the high priority thread, supply a buffer with the size of the input.
 """
 
+[arguments]
+[arguments.maxsize]
+optional="0"
+type="number"
+digest="Maximum list size"
+description="Sets a maximum size for the internal list. The absolute maximum in Max is 32767."
+default = { type="int", size="1", value="256" }
+
 [attributes]
 [attributes.autosize]
 digest = "Determines if the output buffer will be resized according to the size of the input list."
