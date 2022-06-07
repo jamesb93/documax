@@ -42,7 +42,7 @@ under the European Union’s Horizon 2020 research and innovation programme
     {{! OUTLETS }}
     <outletlist>
     {{ #outlets }}
-        <outlet id='{{ id }}' type='{{ type }}'>
+        <outlet id='{{id}}' type='{{type}}'>
             <digest>
             {{ digest }}
             </digest>
@@ -53,6 +53,26 @@ under the European Union’s Horizon 2020 research and innovation programme
     {{ /outlets }}
     </outletlist>
     {{! OUTLETS }}
+
+    {{! ARGUMENTS }}
+    <objarglist>
+    {{ #arguments }}
+        <objarg name='{{name}}' optional='{{optional}}' type='{{number}}'>
+            <digest>
+            {{ digest }}
+            </digest>
+            <description>
+            {{ description }}
+            </description>
+            {{ #default }}
+            <attributelist>
+                <attribute name='default' get='1' set='1' type='{{type}}' size='{{size}}' value='{{value}}' />
+            </attributelist>
+            {{ /default }}
+        </objarg>
+    {{ /arguments }}
+    </objarglist>
+    {{! ARGUMENTS }}
 
     <!--MESSAGES-->
     <methodlist>
@@ -69,6 +89,34 @@ under the European Union’s Horizon 2020 research and innovation programme
         </description>
     </method>
 	{{ /messages }}
+
+    {{ #buffer }}
+    <method name="bang">
+        <arglist />
+        <digest>
+        Trigger processing
+        </digest>
+        <description>
+        Extract data from the <at>source</at> <o>buffer~</o>, given the current values of <at>startframe</at>, <at>numframes</at>, <at>startchan</at> and <at>numchans</at>. 
+        </description>
+    </method>
+    <method name="buffer">
+        <arglist>
+        <!-- This should be true but isn't yet --> 
+        <!-- <arg name= "buffer" optional='0' type="symbol" />
+        <arg name= "start frame" optional='1' type="long" />
+        <arg name= "number of frames" optional='1' type="long" />
+        <arg name= "start channel" optional='1' type="long" />
+        <arg name= "number of channels" optional='1' type="long" /> -->
+        </arglist> 
+        <digest>
+        Set the source buffer~ and trigger processing
+        </digest>
+        <description>
+        Sets the value of <at>source</at><!-- and optionally <at>startframe</at>, <at>numframes</at>, <at>startchan</at>, <at>numchans</at>.--> Then processes as if <m>bang</m> had been called. 
+        </description>
+    </method>
+    {{ /buffer }}
 	</methodlist>
 	<!--MESSAGES-->
 
