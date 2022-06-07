@@ -24,9 +24,38 @@ under the European Union’s Horizon 2020 research and innovation programme
 		<metadata name='tag'>corpus</metadata>
 	</metadatalist>
 
+    {{! INLETS }}
+    <inletlist>
+    {{ #inlets }}
+        <inlet id='{{ id }}' type='{{ type }}'>
+            <digest>
+            {{ digest }}
+            </digest>
+            <description>
+            {{ description }}
+            </description>
+        </inlet>
+    {{ /inlets }}
+    </inletlist>
+    {{! INLETS }}
+
+    {{! OUTLETS }}
+    <outletlist>
+    {{ #outlets }}
+        <outlet id='{{ id }}' type='{{ type }}'>
+            <digest>
+            {{ digest }}
+            </digest>
+            <description>
+            {{ description }}
+            </description>
+        </outlet>
+    {{ /outlets }}
+    </outletlist>
+    {{! OUTLETS }}
+
     <!--MESSAGES-->
     <methodlist>
-
 	{{ #messages }}
     <method name='{{name}}'>
         <arglist>
