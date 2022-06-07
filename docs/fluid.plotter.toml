@@ -11,6 +11,28 @@ It is designed to easily accept the contents of a fluid.dataset~ via a dictionar
 There is also an 'advanced' interface that allows the user to specify the coordinates and colours of the points in a more flexible and bespoke manner. See the help file for more information on this.
 """
 
+[inlets]
+[inlets.0]
+type="anything"
+digest="A dictionary of coordinates for the points in the graph."
+description="The dictionary of coordinates in the correct format for the plotter. By default, the <m>dump</m> method of a <o>fluid.dataset~</o> will work."
+
+[inlets.1]
+type="anything"
+digest="A dictionary of labels for the points in the graph."
+description="The dictionary of labale in the correct format for the plotter. By default, the <m>dump</m> method of a <o>fluid.labelset~</o> will work."
+
+[outlets]
+[outlets.0]
+type="anything"
+digest="The position of the mouse."
+description="The position of the mouse will be reported while the mouse is over the plotter and is clicking and dragging. The position is constrained to the domain of the plotter."
+
+[outlets.1]
+type="anything"
+digest="Zoom updates."
+description="Reports any updates made to the plotter view while zooming."
+
 [messages]
 [messages.xrange]
 msgdesc="Set the x-axis range."
