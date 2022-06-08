@@ -30,7 +30,7 @@ args = [
 ]
 
 [messages.slices]
-msgdesc="Paint vertical slices stored in a buffer~ onto the waveform."
+msgdesc="Paint vertical slices stored in a buffer~ onto the waveform. These markers can be moved, deleted, and added manually too."
 args = [
     { name="markers buffer", type="symbol", optional=0 },
     { name="reference", type="symbol", optional=0 },

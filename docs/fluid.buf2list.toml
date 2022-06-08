@@ -1,7 +1,7 @@
 object = "fluid.buf2list"
 buffer = true
 digest = "Copy the contents of a buffer~ to a list"
-see-also =  ["fluid.list2buf"]
+see-also =  ["fluid.list2buf", "peek~", "poke~"]
 description = "A simplified workflow for extracting numerical data from buffers as lists of numbers."
 discussion = """
 Given a source buffer that is valid, fluid.buf2list copies its contents to a new list when it receives a bang.
@@ -11,53 +11,44 @@ This is a convenient way of extracting data from a buffer to be used elsewhere.
 
 [arguments]
 [arguments.maxsize]
-optional="0"
+optional="1"
 type="number"
 digest="Maximum list size"
 description="Sets a maximum size for the internal list. The absolute maximum in Max is 32767."
 default = { type="int", size="1", value="256" }
 
 [attributes]
-[attributes.autosize]
-digest = "Determines if the output buffer will be resized according to the size of the input list."
-description = ""
-type = "int"
-value = "1"
-size = "1"
-
 [attributes.axis]
-digest = """
-Changes the orientation of the data that is copied. <m>axis 0</m> copies frame-wise into a single channel. <m>axis 1</m> will copy the list channel-wise resulting in as many channels as there are elements in the input list.
-"""
-description = ""
+digest = "Direction in which to copy from the <at>source</at>."
+description="In what direction to copy data from the <at>source</at>. <m>0</m> copies frame by frame, <m>1</m> copies channel-by-channel."
 type = "int"
 value = "0"
 size = "1"
 
 [attributes.destination]
-digest = "The buffer~ to copy the list values to."
-description = ""
+digest = "The <o>buffer~</o> to copy the values from."
+description="Sets the destination <o>buffer~</o> into which to write list data. If this is unset then the object will use its own automatically named <o>buffer~</o>."
 type = "symbol"
 size = "1"
 
 [attributes.startchan]
-digest = "For multichannel output buffers, which which channel to begin copying to. The default is 0."
-description = ""
+digest="Start channel in <at>destination</at>."
+description="For multichannel input buffers, which channel to begin copying from. The default is 0."
 type = "int"
 size = "1"
 value = "0"
 
 [attributes.startframe]
-digest = "The starting index (in samples) from which to copy in the source buffer."
-description = ""
+digest="Start frame in <at>destination</at>."
+description="The starting index (in samples) to copy values from the <at>source</at> <o>buffer~</o>."
 type = "int"
 size = "1"
 value = "0"
 
 [messages]
 [messages.bang]
-digest="Copies the contents of the <m>buffer~</m> to the list."
-description=""
+digest="Trigger processing"
+description="Copies the contents of the <at>source</at> <o>buffer~</o> to the list."
 args=[]
 
 

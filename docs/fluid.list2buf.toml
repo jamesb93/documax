@@ -1,7 +1,7 @@
 object = "fluid.list2buf"
 buffer = false
 digest = "Copy a list to a buffer~"
-see-also =  ["fluid.buf2list"]
+see-also =  ["fluid.buf2list", "peek~", "poke~"]
 description = "Copies the values of a list to a buffer~."
 discussion = """
 fluid.list2buf copies the values of a list to a buffer~.
@@ -13,7 +13,7 @@ Be aware that if a buffer of a predefined size is not supplied as the output it 
 
 [arguments]
 [arguments.maxsize]
-optional="0"
+optional="1"
 type="number"
 digest="Maximum list size"
 description="Sets a maximum size for the internal list. The absolute maximum in Max is 32767."
@@ -22,41 +22,43 @@ default = { type="int", size="1", value="256" }
 [attributes]
 [attributes.autosize]
 digest = "Determines if the output buffer will be resized according to the size of the input list."
-description=""
+description="Sets whether the <at>destination</at> <o>buffer~</o> should be resized as needed. Note that this only applies when invoking from the main thread: buffer~s can not be resized from the high priority thread."
 type="int"
 size="1"
 value="1"
 
 [attributes.axis]
-digest = "Changes the orientation of the data that is copied. `axis 0` copies frame-wise into a single channel. `axis 1` will copy the list channel-wise resulting in as many channels as there are elements in the input list."
-description=""
+digest = "Direction in which to write to <at>destination</at>."
+description="In what direction to write data to <at>destination</at>. <m>0</m> writes frame by frame, <m>1</m> writes channel-by-channel."
 type="int"
 size="1"
 value="0"
 
 [attributes.destination]
-digest="The buffer~ to copy the list values to."
-description=""
+digest="The <o>buffer~</o> to copy the list values to."
+description="Sets the destination <o>buffer~</o> into which to write list data. If this is unset then the object will use its own automatically named <o>buffer~</o>."
 type="symbol"
 size="1"
 
 [attributes.startchan]
-digest="For multichannel output buffers, which which channel to begin copying to. The default is 0."
-description=""
+digest="Start channel in <at>destination</at>."
+description="For multichannel output buffers, which channel to begin copying to. The default is 0."
 type="int"
 size="1"
 value="0"
 
 [attributes.startframe]
-digest="The starting index (in samples) from which to copy in the source buffer."
-description=""
+digest="Start frame in <at>destination</at>."
+description="The starting index (in samples) to copy list to the <at>destination</at> <o>buffer~</o>."
 type="int"
 size="1"
 value="0"
 
 [messages]
 [messages.list]
-digest = "The input list to be copied."
+digest="Trigger processing"
+description="Copy the values from the incoming list to the <at>destination</at> <o>buffer~</o>. If the <o>buffer~</o> is not big enough, <at>autosize</at> is enabled and procesing is triggered from the main thread, then the <o>buffer~</o> will be resized. If called from the scheduler thread, no resize will be attempted and a warning will be printed to the console."
+
 
 
 
