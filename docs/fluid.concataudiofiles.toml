@@ -17,8 +17,7 @@ size="1"
 
 [messages]
 [messages.list]
-args=[]
-digest="A list of valid audio file paths."
+msgdigest="A list of valid audio file paths."
 msgdesc="A list of valid audio file paths. They should be absolute paths to the files. The files will be concatenated in the order they are listed."
 
 
