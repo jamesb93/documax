@@ -25,9 +25,9 @@ type = "int"
 value = "0"
 size = "1"
 
-[attributes.destination]
+[attributes.source]
 digest = "The <o>buffer~</o> to copy the values from."
-description="Sets the destination <o>buffer~</o> into which to write list data. If this is unset then the object will use its own automatically named <o>buffer~</o>."
+description="Sets the source <o>buffer~</o> to copy data from."
 type = "symbol"
 size = "1"
 
