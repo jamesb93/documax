@@ -1,0 +1,25 @@
+object = "fluid.concataudiofiles"
+buffer = false
+digest = "Concatenate audio files"
+see-also =  ["fluid.audiofilesin"]
+description = "Concatenate a list of audio files into a single buffer~."
+discussion = """
+Given a list of valid paths to audio files, this abstraction concatenates them into a single destination buffer~. It also reports a dictionary of the items that are concatenated, including their positions in the destination buffer, number of channels and sampling rates.
+"""
+
+[attributes]
+[attributes.destination]
+digest="The <o>buffer~</o> to concatenate the audio files values to."
+description="Sets the destination <o>buffer~</o> for files to be concatenated to."
+type="symbol"
+size="1"
+
+
+[messages]
+[messages.list]
+digest="A list of valid audio file paths."
+description="A list of valid audio file paths. They should be absolute paths to the files. The files will be concatenated in the order they are listed."
+
+
+
+
