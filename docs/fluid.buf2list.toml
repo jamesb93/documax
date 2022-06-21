@@ -45,10 +45,4 @@ type = "int"
 size = "1"
 value = "0"
 
-[messages]
-[messages.bang]
-digest="Trigger processing"
-description="Copies the contents of the <at>source</at> <o>buffer~</o> to the list."
-args=[]
-
 

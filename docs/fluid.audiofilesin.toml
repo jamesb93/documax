@@ -10,7 +10,7 @@ Given a valid path to a directory on disk, this abstraction reports all audio fi
 [messages]
 [messages.list]
 digest="A valid path to a directory"
-description="The directory to scan for audio files."
+msgdesc="The directory to scan for audio files."
 
 
 
