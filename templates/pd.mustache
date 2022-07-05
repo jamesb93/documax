@@ -1,0 +1,106 @@
+<!--
+Part of the Fluid Corpus Manipulation Project (http://www.flucoma.org/)
+Copyright 2017-2019 University of Huddersfield.
+Licensed under the BSD-3 License.
+See license.md file in the project root for full license information.
+This project has received funding from the European Research Council (ERC)
+under the European Union’s Horizon 2020 research and innovation programme
+(grant agreement No 725899).
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="./_c74_common.css">
+<title>{{ object }} Reference</title>
+<style>
+  .type, .defaultval { 
+	font-weight: normal; 
+  }
+</style> 
+</head>
+<body>
+  	<h1 class="ref_title">{{ object }}</h1>
+  	<div class="digest">{{ digest }}</div>
+  	<section class="object_description">
+		<h2>Description</h2> 
+	<p>{{ description }}</p>
+  	</section> 
+  		<section class="object_discussion"> 
+    	<h2>Discussion</h2> 
+    	<p>{{ discussion }}</p>
+    	<p>{{ object }} is part of the Fluid Decomposition Toolkit of the FluCoMa project. For more explanations, learning material, and discussions on its musicianly uses, visit <a href="http://www.flucoma.org/">flucoma.org</a>.</p>
+  	</section>
+  	<section class="argument_section">
+    	<h2>Arguments</h2>
+		{{ #arguments }}
+      	<h3 class="argument_name">{{ name }}<span class="type"> [{{ number }}]</span></h3> 
+      	<div class="optional">Optional</div> 
+      	{{ #default }}
+      	<span class="defaultval"> (default: {{ value }})</span>
+	  	{{ /default }}
+    	<div class="description">{{ description }}</div>
+    	{{ /arguments }}
+ 	 </section> 
+  	<section class="attribute_section">
+    <h2>Attributes</h2>
+    {{ #attributes }}
+    <div class="attribute_group">
+    	<h3 class="attribute_name">{{ name }}
+        <span class="type"> [{{ type  }}]</span>
+        <span class="defaultval"> (default: {{ value }})</span>
+      	</h3>
+      	<div class="description">{{ description }}</div>       
+      {{! {%- if 'enum' in bits -%} }}
+      {{! <div class="enumvals">       }}
+      {{! <ol start='0'>  }}
+        {{! {%- for enumname,desc in bits['enum'].items() -%} }}
+        {{! <li> }}
+          {{! {{ desc|rst }} }}
+        {{! </li>  }}
+        {{! {%- endfor -%} }}
+      {{! </ol> }}
+      {{! </div> }}
+      {{! {%- endif -%}             }}
+		</div>
+    {{ /attributes }}
+  	</section> 
+  	<section class="method_section"> 
+    <h2>Messages</h2>
+	{{ #buffer }}
+    <div class="method_group">
+    	<h3 class="method_name" name="bang">bang</h3>
+    	<div class="description"> A bang will commence processing on object given its current settings, unless it is already busy. In that case, the behaviour depends on the value of the <span class="messagename" data-message="queue"> queue </span>
+        attribute. </div>
+    </div>
+    <div class="method_group">
+    	<h3 class="method_name" name="cancel">cancel</h3>
+    	<div class="description"> When processing in non-blocking mode, this will cancel the job underway, without updating destination buffers. </div>
+    </div>    
+    {{ /buffer }}
+	{{ #messages }}
+	<div class='method_group'>
+		<h3 class='method_name' name='{{name}}'>{{ name }}</h3>
+		<span class='arglist'>Arguments: </span>
+		{{ #args }}
+		<span class='arg'>{{name}} ({{type}})</span>
+		<div class='description'>
+		<p>{{ msgdesc }}</p>
+		</div>
+
+		<h5>Argument details:</h5>
+		<ul>
+			<li>{{ name }}: {{ desc }}</li>
+		</ul>
+		{{ /args }}
+	</div>
+	{{ /messages }}
+  </section> 
+  <section class="seealso"> 
+    <h2>See Also</h2> 
+    {{ #see-also }}
+    <h3 class="seealso_name"><a href='{{.}}.html'>{{ s }}</a></h3>    
+    {{ /see-also }}
+  </section> 
+</body>
+</html>
