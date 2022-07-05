@@ -1,0 +1,13 @@
+object = "fluid.s2f"
+buffer = false
+digest = "Convert a symbol into a float"
+see-also =  []
+description = "Convert a floating point value expressed as a symbol ('string') and output it as a float."
+discussion = """
+"""
+
+
+[messages]
+[messages.xrange]
+msgdesc="Convert the symbol into a float"
+args=[]
