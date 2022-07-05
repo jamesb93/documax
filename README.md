@@ -1,27 +1,22 @@
 Creates some manual documentation for FluCoMa objects that don't fit nicely into the current build system.
 
-So far generates:
-
-`fluid.plotter`
-`fluid.waveform~`
-`fluid.buf2list`
-`fluid.list2buf`
-
 # Instructions
 
 1. `pnpm i`
-2. `node parser.js`
+2. `node parser.js -e <cce> -o <output path>`
 
-This will transform the docs stored in the `docs` path to the output folder set in that script. By default is in this repo at `output`, but can be configured to go anywhere by changing that line in `parser.js`.
+`-e` dictates which set of documentation you'd like to build, either `pd` or `max`.
 
-Optionally you can supply the `-o` parameter to set the output folder. For example:
+`-o` sets the output path, which by default is in the same folder as where `parser.js` is called from.
 
-`node parser.js -o help` would output all the transformed documentation to the folder named `help`. If it does not exist it will be made.
+So for example, you might run:
+
+`node parser.js -e pd -o ~/Documents/Pd/`
 
 # Explanation
 
-Documentation is described in [TOML](https://toml.io/en/) files in the `docs` folder. The name of the file should correspond to the name of the object.
+Documentation is described in [TOML](https://toml.io/en/) files. The name of the file should correspond to the name of the object.
 
-Using [moustache templates](https://github.com/janl/mustache.js/) data from the TOML representation is marked up into a Max compatible `.maxref.xml` file.
+Using [moustache templates](https://github.com/janl/mustache.js/) data from the TOML representation is rendered via a template (see the templates folder).
 
-There should be a decent enough set of edge cases across the four files which exist already.
+There should be a decent enough set of edge cases represented across the four files which exist already.
