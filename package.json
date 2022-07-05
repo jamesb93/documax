@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "commander": "^9.3.0",
+    "command-line-args": "^5.2.1",
     "fast-glob": "^3.2.11",
     "mustache": "^4.2.0",
     "toml": "^3.0.0"
