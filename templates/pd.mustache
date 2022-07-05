@@ -51,55 +51,38 @@ under the European Union’s Horizon 2020 research and innovation programme
         <span class="defaultval"> (default: {{ value }})</span>
       	</h3>
       	<div class="description">{{ description }}</div>       
-      {{! {%- if 'enum' in bits -%} }}
-      {{! <div class="enumvals">       }}
-      {{! <ol start='0'>  }}
-        {{! {%- for enumname,desc in bits['enum'].items() -%} }}
-        {{! <li> }}
-          {{! {{ desc|rst }} }}
-        {{! </li>  }}
-        {{! {%- endfor -%} }}
-      {{! </ol> }}
-      {{! </div> }}
-      {{! {%- endif -%}             }}
 		</div>
     {{ /attributes }}
   	</section> 
   	<section class="method_section"> 
     <h2>Messages</h2>
-	{{ #buffer }}
-    <div class="method_group">
-    	<h3 class="method_name" name="bang">bang</h3>
-    	<div class="description"> A bang will commence processing on object given its current settings, unless it is already busy. In that case, the behaviour depends on the value of the <span class="messagename" data-message="queue"> queue </span>
-        attribute. </div>
-    </div>
-    <div class="method_group">
-    	<h3 class="method_name" name="cancel">cancel</h3>
-    	<div class="description"> When processing in non-blocking mode, this will cancel the job underway, without updating destination buffers. </div>
-    </div>    
-    {{ /buffer }}
 	{{ #messages }}
 	<div class='method_group'>
 		<h3 class='method_name' name='{{name}}'>{{ name }}</h3>
 		<span class='arglist'>Arguments: </span>
 		{{ #args }}
 		<span class='arg'>{{name}} ({{type}})</span>
+		{{ /args }}
 		<div class='description'>
 		<p>{{ msgdesc }}</p>
 		</div>
 
 		<h5>Argument details:</h5>
 		<ul>
-			<li>{{ name }}: {{ desc }}</li>
+			{{ #args }}	
+			<li>{{ name }}: <p>{{ desc }}</p></li>
+			{{ /args  }}
 		</ul>
-		{{ /args }}
 	</div>
 	{{ /messages }}
   </section> 
   <section class="seealso"> 
     <h2>See Also</h2> 
     {{ #see-also }}
-    <h3 class="seealso_name"><a href='{{.}}.html'>{{ s }}</a></h3>    
+    <h3 class="seealso_name">
+		<a href='{{.}}.html'>
+		{{ . }}
+		</a></h3>    
     {{ /see-also }}
   </section> 
 </body>
