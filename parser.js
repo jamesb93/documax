@@ -4,14 +4,15 @@ const fs = require('fs');
 const path = require('path');
 const fg = require('fast-glob');
 const Mustache = require('mustache');
-const { program } = require('commander');
+const commandLineArgs = require('command-line-args')
 
-program.option('-o');
-program.option('-e');
-program.parse()
-const options = program.opts();
-const dir = options.o ? program.args[0] : 'output';
-const cce = options.e ? program.args[0] : 'max';
+const options = commandLineArgs([
+    { name: 'environment', alias: 'e', defaultValue: 'max', type: String},
+    { name: 'output', alias: 'o', defaultValue: './output', type: String}
+])
+
+const dir = options.output;
+const cce = options.environment;
 const extensions = new Map([
     ['max', '.maxref.xml'],
     ['pd', '.html']
