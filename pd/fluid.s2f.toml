@@ -4,6 +4,7 @@ digest = "Convert a symbol into a float"
 see-also =  []
 description = "Convert a floating point value expressed as a symbol ('string') and output it as a float."
 discussion = """
+Note that the symbol needs to be enclosed in double quotes for s2f to work.
 """
 
 
