@@ -7,9 +7,11 @@ const Mustache = require('mustache');
 const { program } = require('commander');
 
 program.option('-o');
+program.option('-e');
 program.parse()
 const options = program.opts();
 const dir = options.o ? program.args[0] : 'output';
+const cce = options.o ? program.args[0] : 'max';
 const sanitise = (data) => {
     // Messages
     let copy = data;
@@ -66,8 +68,8 @@ const sanitise = (data) => {
     return copy
 }
 
-const configs = fg.sync(['docs/*.toml']);
-const template = fs.readFileSync('./template.mustache', 'utf8')
+const configs = fg.sync([`${cce}/*.toml`]);
+const template = fs.readFileSync(`./templates/${cce}.mustache`, 'utf8')
 Mustache.escape = (text) => text; // escape maxref tags
 
 if (!fs.existsSync(dir)) { fs.mkdirSync(dir) };
