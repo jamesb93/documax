@@ -1,0 +1,8 @@
+object = "fluid.multiarray"
+buffer = false
+digest = "Multichannel arrays"
+see-also =  []
+description = "An abstraction that assists in the management and creation of multichannel arrays."
+discussion = """
+his abstraction allows the creation of multichannel arrays. Note that it requires invoking with the clone object to work.
+"""

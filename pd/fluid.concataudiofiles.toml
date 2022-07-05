@@ -1,0 +1,25 @@
+object = "fluid.concataudiofiles"
+buffer = false
+digest = "A utility to concatenate audio files"
+see-also =  []
+description = "Given a list of valid audio file paths, concatenates them into a single array."
+discussion = """
+This object takes a list of paths to audio files, loads them one after the other into a <a href='fluid.multiarray.html'>fluid.multiarray</a>, and fills a text with the filenames, start and end frames, sampling rate and channel count.
+"""
+
+
+[messages]
+[messages.list]
+msgdesc="Trigger concatenation"
+args=[]
+
+[arguments]
+[arguments.multiarray]
+type="symbol"
+msgdesc="A destination fluid.multiarray"
+default=""
+
+[arguments.text]
+type="symbol"
+description="A destination text object to store metadata about the concatenated files"
+default=""
