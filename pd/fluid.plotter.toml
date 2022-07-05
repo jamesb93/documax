@@ -1,0 +1,86 @@
+object = "fluid.plotter"
+buffer = false
+digest = "Plot data in a two-dimensional graph."
+see-also =  ["fluid.waveform"]
+description = "A GUI object that plots data in a two-dimensional graph."
+discussion = """
+The fluid.plotter object can be used as a versatile solution for plotting points in a two-dimensional graph.
+
+It is designed to easily accept the contents of a fluid.dataset via a dictionary as coordinates within the graph as well as the contents of a fluid.labelset~ via a dictionary as colours for points.
+
+There is also an 'advanced' interface that allows the user to specify the coordinates and colours of the points in a more flexible and bespoke manner. See the help file for more information on this.
+"""
+
+[attributes]
+[attributes.axis]
+digest = "Direction in which to copy from the source<."
+description="In what direction to copy data from the source. <m>0</m> copies frame by frame, <m>1</m> copies channel-by-channel."
+type = "int"
+value = "0"
+size = "1"
+
+[attributes.source]
+digest = "The buffer~ to copy the values from."
+description="Sets the source buffer~ to copy data from."
+type = "symbol"
+size = "1"
+
+[attributes.startchan]
+digest="Start channel in destination."
+description="For multichannel input buffers, which channel to begin copying from. The default is 0."
+type = "int"
+size = "1"
+value = "0"
+
+[messages]
+[messages.xrange]
+msgdesc="Set the x-axis range."
+args=[
+    { name="min", type="number", desc='The minimum value for the x-axis' },
+    { name="max", type="number", desc='The maximum value for the x-axis' }
+]
+
+[messages.yrange]
+msgdesc ="Set the y-axis range."
+args=[
+    { name="min", type="number", desc='The minimum value for the y-axis' },
+    { name="max", type="number", desc='The maximum value for the y-axis' }
+]
+
+[messages.range]
+msgdesc = "Set the x- and y-axis ranges."
+args=[
+    { name="min", type="number", desc='The minimum value for the x-axis and y-axis' },
+    { name="max", type="number", desc='The maximum value for the x-axis and y-axis' }
+]
+
+[messages.pointcolor]
+msgdesc = "Set the color of the point with a given identifier."
+args = [
+    { name="identifier", type="symbol", desc="A symbol representing an identifier of the internal dataset" },
+    { name="red", type="number", desc="The red value from 0 to 1" },
+    { name="green", type="number", desc="The green value from 0 to 1" },
+    { name="blue", type="number", desc="The blue value from 0 to 1" },
+    { name="alpha", type="number", desc="The alpha value from 0 to 1" }
+]
+
+[messages.pointsize]
+msgdesc = "Set the size of the point with a given identifier."
+args = [
+    { name="identifier", type="symbol", desc="A symbol representing an identifier" },
+    { name="size", type="number", desc="The size of the point"}
+]
+
+[messages.pointsizescale]
+msgdesc = "Set the overall size of the points."
+args = [
+    { name="scale", type="number", desc="The size scale of all the points" }
+]
+
+[messages.clear]
+msgdesc = "Clears the graph and all associated data and settings."
+args = []
+
+[messages.reset]
+msgdesc = "An alias of clear. Clears the graph."
+args = []
