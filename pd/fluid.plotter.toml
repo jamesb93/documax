@@ -1,7 +1,7 @@
 object = "fluid.plotter"
 buffer = false
 digest = "Plot data in a two-dimensional graph."
-see-also =  ["fluid.waveform"]
+see-also =  ["fluid.ds2text", "fluid.ls2text"]
 description = "A GUI object that plots data in a two-dimensional graph."
 discussion = """
 The fluid.plotter object can be used as a versatile solution for plotting points in a two-dimensional graph.
@@ -17,19 +17,16 @@ digest = "Direction in which to copy from the source<."
 description="In what direction to copy data from the source. <m>0</m> copies frame by frame, <m>1</m> copies channel-by-channel."
 type = "int"
 value = "0"
-size = "1"
 
 [attributes.source]
 digest = "The buffer~ to copy the values from."
 description="Sets the source buffer~ to copy data from."
 type = "symbol"
-size = "1"
 
 [attributes.startchan]
 digest="Start channel in destination."
 description="For multichannel input buffers, which channel to begin copying from. The default is 0."
 type = "int"
-size = "1"
 value = "0"
 
 [messages]
@@ -54,33 +51,25 @@ args=[
     { name="max", type="number", desc='The maximum value for the x-axis and y-axis' }
 ]
 
-[messages.pointcolor]
-msgdesc = "Set the color of the point with a given identifier."
-args = [
-    { name="identifier", type="symbol", desc="A symbol representing an identifier of the internal dataset" },
-    { name="red", type="number", desc="The red value from 0 to 1" },
-    { name="green", type="number", desc="The green value from 0 to 1" },
-    { name="blue", type="number", desc="The blue value from 0 to 1" },
-    { name="alpha", type="number", desc="The alpha value from 0 to 1" }
-]
-
-[messages.pointsize]
-msgdesc = "Set the size of the point with a given identifier."
-args = [
-    { name="identifier", type="symbol", desc="A symbol representing an identifier" },
-    { name="size", type="number", desc="The size of the point"}
-]
-
-[messages.pointsizescale]
-msgdesc = "Set the overall size of the points."
-args = [
-    { name="scale", type="number", desc="The size scale of all the points" }
+[messages.highlight]
+msgdesc="Emphasises the given identifier's points in the plot"
+args=[
+	{ name="identifiers", type="list", desc="Any number of identifiers" }
 ]
 
 [messages.clear]
 msgdesc = "Clears the graph and all associated data and settings."
-args = []
+args = [] 
 
-[messages.reset]
-msgdesc = "An alias of clear. Clears the graph."
-args = []
+[messages.setlabels]
+msgdesc="Set the labels for each point according to their labels in a fluid.labelset."
+args=[
+	{ name="text", type="symbol", desc="The name of a text object containing data from a fluid.dataset. This message must enter the left inlet."  }
+]
+
+[messages.setpoints]
+msgdesc="Set the position for points by their data in a fluid.dataset."
+args=[
+	{ name="text", type="symbol", desc="The name of a text object containing labels from a fluid.labelset. This message must enter the right inlet."  }
+]
+
