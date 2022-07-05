@@ -11,7 +11,11 @@ program.option('-e');
 program.parse()
 const options = program.opts();
 const dir = options.o ? program.args[0] : 'output';
-const cce = options.o ? program.args[0] : 'max';
+const cce = options.e ? program.args[0] : 'max';
+const extensions = new Map([
+    ['max', '.maxref.xml'],
+    ['pd', '.html']
+])
 const sanitise = (data) => {
     // Messages
     let copy = data;
@@ -77,7 +81,8 @@ if (!fs.existsSync(dir)) { fs.mkdirSync(dir) };
 for (const config of configs) {
     const data = fs.readFileSync(config);
     const parsed = sanitise(toml.parse(data));
-    const output = path.join(dir, path.parse(config).name + '.maxref.xml');
+    const ext = extensions.get(cce);
+    const output = path.join(dir, path.parse(config).name + ext);
     fs.writeFileSync(output, Mustache.render(template, parsed))
     console.log('Wrote ' + output);
 }
