@@ -1,0 +1,25 @@
+object = "fluid.ds2text"
+buffer = false
+digest = "Convert FluCoMa DataSet into text"
+see-also =  []
+description = "A utility object to convert a fluid.dataset into text."
+discussion = """
+This is an object for conveniently converting a <a href='fluid.dataset.html'>fluid.dataset</a> into text.
+"""
+
+
+[messages]
+[messages.bang]
+msgdesc="Trigger processing"
+args=[]
+
+[arguments]
+[arguments.dataset]
+type="symbol"
+description="A source dataset"
+default=""
+
+[arguments.text]
+type="symbol"
+description="A destination text object"
+default=""
