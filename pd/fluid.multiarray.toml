@@ -4,19 +4,16 @@ digest = "Multichannel arrays"
 see-also =  []
 description = "An abstraction that assists in the management and creation of multichannel arrays."
 discussion = """
-This abstraction allows the creation of multichannel arrays. Note that it requires invoking with the clone object to work.
+This abstraction allows the creation of multichannel arrays. Note that it requires invoking via the [clone] object to work.
 """
 
 [arguments]
-[arguments.channels]
-type="int"
-description="The number of channels for the multiarray"
 
 [arguments.name]
 type="symbol"
-description="The name of the multiarray"
+description="The name of the multiarray. Each component array is using this name, followed by the 'channe' number. For instance, <b>name-0</b> is the zeroth channel of <b>name</b>. The usual send-to-array syntax via <b>;name</b> will address all the channels at once."
 
 [arguments.size]
 type="int"
-description="The number of elements that the array should store"
+description="The number of elements in each channel array."
 

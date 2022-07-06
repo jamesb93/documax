@@ -7,6 +7,19 @@ discussion = """
 This is an object for conveniently converting a <a href='fluid.labelset.html'>fluid.labelset</a> into text.
 """
 
+[inlets]
+[inlets.0]
+type="anything"
+description="Bang triggers the process."
+
+[inlets.1]
+type="symbol"
+description="Change the <a href='fluid.labelset.html'>fluid.labelset</a> that is converted to text."
+
+[outlets]
+[outlets.0]
+type="bang"
+description="Bang when done."
 
 [messages]
 [messages.bang]

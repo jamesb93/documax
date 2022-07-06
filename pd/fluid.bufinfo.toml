@@ -2,11 +2,25 @@ object = "fluid.bufinfo"
 buffer = false
 digest = "Query fluid.multiarray"
 see-also =  []
-description = "An abstraction for querying various attributes of a fluid.multiarray"
+description = "An abstraction for querying the dimensions of a fluid.multiarray"
 discussion = """
 This object is designed for testing the validity, the size in frames and the number of channels of a fluid.multiarray, either when created via the clone object, or programmatically with automatically generated 'buffers'.
 """
 
+[attributes]
+[attributes.source]
+optional="1"
+type = "symbol"
+size="1"
+description="The multiarray to report on."
+
 [messages]
-[message.buffer]
-msgdesc="Set the source buffer and return the size in frames and number of channels"
+[messages.buffer]
+msgdesc="Set the source 'buffer' and return the size in frames and the number of 'channels'"
+args = [
+    { name="buffer", type="symbol", default="default", optional=0 }
+]
+
+[messages.bang]
+msgdesc="Return the size in frames and the number of 'channels' of 'source'"
+args=[]
