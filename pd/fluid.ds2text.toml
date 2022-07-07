@@ -9,7 +9,7 @@ This is an object for conveniently converting a <a href='fluid.dataset.html'>flu
 
 [inlets]
 [inlets.0]
-type="anything"
+type="bang"
 description="Bang triggers the process."
 
 [inlets.1]
@@ -30,9 +30,11 @@ args=[]
 [arguments.dataset]
 type="symbol"
 description="A source dataset"
-default=""
+default="none"
+optional=false
 
 [arguments.text]
 type="symbol"
 description="A destination text object"
-default=""
+default="none"
+optional=true

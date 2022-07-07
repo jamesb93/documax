@@ -18,13 +18,12 @@ args = [
 
 [arguments]
 [arguments.multiarray]
-optional="0"
+optional=true
 type="symbol"
-msgdesc="A destination fluid.multiarray"
+description="A destination fluid.multiarray"
 default=""
 
 [arguments.text]
-optional="0"
 type="symbol"
-description="A destination text object to store metadata about the concatenated files"
+msgdesc="A destination text object to store metadata about the concatenated files"
 default=""
