@@ -93,61 +93,61 @@ optional=true
 [messages]
 
 [messages.waveform]
-msgdesc="Set the source 'buffer' for the waveform to draw."
+msgdesc="Set the source 'buffer' for the waveform to draw. This can be a multichannel audiofile and will be normalised across channels."
 args = [
-    { name="buffer", type="symbol", default="", optional=false }
+    { name="buffer", type="symbol", default="", optional=false, desc='The name of the "fluid.multiarray" to draw as a waveform.' }
 ]
 
 [messages.features]
 msgdesc="Set the source 'buffer' for the features to draw. Each feature is normalised individually."
 args = [
-    { name="buffer", type="symbol", default="", optional=false }
+    { name="buffer", type="symbol", default="", optional=false, desc='The name of the "fluid.multiarray" to draw as lines of features.' }
 ]
 
 [messages.image]
-msgdesc="Set the source 'buffer' for the image matrix to draw. The minimum is mapped to dark and the maximum is mapped to bright."
+msgdesc="Set the source 'buffer' for the image matrix to draw. The minimum is mapped to dark and the maximum is mapped to bright. This is sometimes referred to as a heat map."
 args = [
-    { name="buffer", type="symbol", default="", optional=false }
+    { name="buffer", type="symbol", default="", optional=false, desc='The name of the "fluid.multiarray" to draw as a 2d matrix.' }
 ]
 
 [messages.indices]
 msgdesc="Set the source 'buffer' for the indices to draw. This needs to happen after the waveform is set in order to define the timeframe of the markers."
 args = [
-    { name="buffer", type="symbol", default="", optional=0 }
+    { name="buffer", type="symbol", default="", optional=0, desc='The name of the array, or multiarray, containing indices to draw as markers.' }
 ]
 
 [messages.imagelogflag]
 msgdesc="Set how the full range of values in the 2d matrix is mapped to color. 0 is linear, 1 is logarithmic."
 args = [
-    { name="flag", type="int", default="0", optional=false }
+    { name="flag", type="int", default="0", optional=false, desc='The flag: 0 is linear, 1 is logarithmic.' }
 ]
 
 [messages.linewidth]
 msgdesc="Set the line width for both the markers of indices and the lines of features."
 args = [
-    { name="width", type="int", default="2", optional=false }
+    { name="width", type="int", default="2", optional=false, desc='The width of the line.' }
 ]
 
 [messages.waveformcolor]
 msgdesc="Set the colour of the waveform. This is the new Pd colour format #rrggbb where rr,gg,bb are hexadecimal for each RGB component."
 args = [
-    { name="colour", type="symbol", default="#123456", optional=false }
+    { name="colour", type="symbol", default="#123456", optional=false, desc='The colour in #RRGGBB format.' }
 ]
 
 [messages.featurescolor]
 msgdesc="Set the colour of the features lines. This is the new Pd colour format #rrggbb where rr,gg,bb are hexadecimal for each RGB component."
 args = [
-    { name="colour", type="symbol", default="#880000", optional=false }
+    { name="colour", type="symbol", default="#880000", optional=false, desc='The colour in #RRGGBB format.' }
 ]
 
 [messages.imagecolorscheme]
-msgdesc="Set the color scheme used to draw the matrix values. 0 is CET-L02, 1 is CET-L16. See the <a href='https://colorcet.com/'>ColorCET website</a> for more information."
+msgdesc="Set the perceptually linear color scheme used to draw the matrix values. See the <a href='https://colorcet.com/'>ColorCET website</a> for more information."
 args = [
-    { name="scheme", type="int", default="0", optional=0 }
+    { name="scheme", type="int", default="0", optional=0, desc='The colour scheme. 0 is CET-L02, 1 is CET-L16.' }
 ]
 
 [messages.indicescolor]
 msgdesc="Set the colour of the marker line drawn for indices. This is the new Pd colour format #rrggbb where rr,gg,bb are hexadecimal for each RGB component."
 args = [
-    { name="colour", type="symbol", default="#EECC00", optional=false }
+    { name="colour", type="symbol", default="#EECC00", optional=false, desc='The colour in #RRGGBB format.' }
 ]
