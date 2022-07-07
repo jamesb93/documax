@@ -1,30 +1,29 @@
 object = "fluid.ds2text"
 buffer = false
 digest = "Convert FluCoMa DataSet into text"
-see-also =  []
+see-also =  ["fluid.dataset"]
 description = "A utility object to convert a fluid.dataset into text."
 discussion = """
 This is an object for conveniently converting a <a href='fluid.dataset.html'>fluid.dataset</a> into text.
 """
 
 [inlets]
-[inlets.0]
+[inlets.1]
 type="bang"
 description="Bang triggers the process."
 
-[inlets.1]
+[inlets.2]
 type="symbol"
 description="Change the <a href='fluid.dataset.html'>fluid.dataset</a> that is converted to text."
 
 [outlets]
-[outlets.0]
+[outlets.1]
 type="bang"
 description="Bang when done."
 
 [messages]
 [messages.bang]
 msgdesc="Trigger processing"
-args=[]
 
 [arguments]
 [arguments.dataset]

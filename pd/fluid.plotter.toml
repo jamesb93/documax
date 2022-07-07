@@ -1,35 +1,39 @@
 object = "fluid.plotter"
 buffer = false
 digest = "Plot data in a two-dimensional graph."
-see-also =  ["fluid.ds2text", "fluid.ls2text"]
+see-also =  ["fluid.ds2text", "fluid.ls2text", "fluid.dataset", "fluid.labelset"]
 description = "A GUI object that plots data in a two-dimensional graph."
 discussion = """
 The fluid.plotter object can be used as a versatile solution for plotting points in a two-dimensional graph.
 
-It is designed to easily accept the contents of a fluid.dataset via a dictionary as coordinates within the graph as well as the contents of a fluid.labelset~ via a dictionary as colours for points.
+It is designed to easily accept the contents of a fluid.dataset via a [text] object as coordinates within the graph as well as the contents of a fluid.labelset via a [text] object as colours for points.
 
-There is also an 'advanced' interface that allows the user to specify the coordinates and colours of the points in a more flexible and bespoke manner. See the help file for more information on this.
+There is also an 'advanced' interface that allows the user to specify the coordinates, sizes and colours of the points in a more flexible and bespoke manner. See the help file for more information on this.
 """
 
-[attributes]
-[attributes.axis]
-digest = "Direction in which to copy from the source<."
-description="In what direction to copy data from the source. <m>0</m> copies frame by frame, <m>1</m> copies channel-by-channel."
-type = "int"
-value = "0"
+[inlets]
+[inlets.1]
+type="symbol"
+description="See below for the various messages."
 
-[attributes.source]
-digest = "The buffer~ to copy the values from."
-description="Sets the source buffer~ to copy data from."
-type = "symbol"
+[inlets.2]
+type="symbol"
+description="See the 'setpoints' message below."
 
-[attributes.startchan]
-digest="Start channel in destination."
-description="For multichannel input buffers, which channel to begin copying from. The default is 0."
-type = "int"
-value = "0"
+[outlets]
+[outlets.1]
+type="list"
+description="A list of the x-y coordinates where the mouse is clicked and dragged."
+
 
 [messages]
+[messages.range]
+msgdesc = "Set the x- and y-axis ranges."
+args=[
+    { name="min", type="number", desc='The minimum value for the x-axis and y-axis' },
+    { name="max", type="number", desc='The maximum value for the x-axis and y-axis' }
+]
+
 [messages.xrange]
 msgdesc="Set the x-axis range."
 args=[
@@ -44,32 +48,51 @@ args=[
     { name="max", type="number", desc='The maximum value for the y-axis' }
 ]
 
-[messages.range]
-msgdesc = "Set the x- and y-axis ranges."
-args=[
-    { name="min", type="number", desc='The minimum value for the x-axis and y-axis' },
-    { name="max", type="number", desc='The maximum value for the x-axis and y-axis' }
-]
-
 [messages.highlight]
 msgdesc="Emphasises the given identifier's points in the plot"
 args=[
-	{ name="identifiers", type="list", desc="Any number of identifiers" }
+	{ name="identifiers", type="list", desc="Any number of identifiers as a list of symbols." }
 ]
 
 [messages.clear]
 msgdesc = "Clears the graph and all associated data and settings."
 args = [] 
 
-[messages.setlabels]
-msgdesc="Set the labels for each point according to their labels in a fluid.labelset."
+[messages.setpoints]
+msgdesc="Set the position for points by their data in a [text] object, usually retrieved from a fluid.dataset."
 args=[
-	{ name="text", type="symbol", desc="The name of a text object containing data from a fluid.dataset. This message must enter the left inlet."  }
+	{ name="text", type="symbol", desc="The name of a text object containing data from a fluid.dataset."  }
 ]
 
-[messages.setpoints]
-msgdesc="Set the position for points by their data in a fluid.dataset."
+[messages.setlabels]
+msgdesc="Set the labels for each point according to their labels in a [text] object, usually retrieved from a fluid.labelset."
 args=[
 	{ name="text", type="symbol", desc="The name of a text object containing labels from a fluid.labelset. This message must enter the right inlet."  }
 ]
+
+[messages.pointsize]
+msgdesc="Set the size of a single point."
+args=[
+	{ name="text", type="symbol", desc="The identifier of the point to resize."  },
+  { name="size", type="number", desc="The radius of the point to draw in pixel."  }
+]
+
+[messages.pointcolor]
+msgdesc="Set the colour of a single point."
+args=[
+	{ name="text", type="symbol", desc="The identifier of the point to modify."  },
+  { name="colour", type="number", desc="The class (0 to 7) or Pd colour value (999 -> RGB) for the point." }
+]
+
+[messages.setpoint]
+msgdesc="Creates or overwrites a single point."
+args=[
+	{ name="text", type="symbol", desc="The identifier of the point to create or modify."  },
+  { name="x-pos", type="number", desc="The position of the point on the x-axis."  },
+  { name="y-pos", type="number", desc="The position of the point on the y-axis."  },
+  { name="size", type="number", desc="The radius of the point to draw in pixel."  },
+  { name="colour", type="number", desc="The class (0 to 7) or Pd colour value (999 -> RGB) for the point." }
+  
+]
+
 

@@ -1,18 +1,27 @@
 object = "fluid.bufinfo"
 buffer = false
 digest = "Query fluid.multiarray"
-see-also =  []
+see-also =  ["fluid.multiarray","fluid.bufcompose"]
 description = "An abstraction for querying the dimensions of a fluid.multiarray"
 discussion = """
 This object is designed for testing the validity, the size in frames and the number of channels of a fluid.multiarray, either when created via the clone object, or programmatically with automatically generated 'buffers'.
 """
+[inlets]
+[inlets.1]
+type="anything"
+description="See below for the various messages."
+
+[outlets]
+[outlets.1]
+type="list"
+description="A list of 2 numbers: the size in frames and the number of 'channels'."
 
 [attributes]
 [attributes.source]
-optional="1"
+optional=true
 type = "symbol"
 size="1"
-description="The multiarray to report on."
+description="The 'multiarray' / 'buffer' to report on."
 
 [messages]
 [messages.buffer]
@@ -23,4 +32,3 @@ args = [
 
 [messages.bang]
 msgdesc="Return the size in frames and the number of 'channels' of 'source'"
-args=[]

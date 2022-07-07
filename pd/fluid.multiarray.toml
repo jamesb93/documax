@@ -1,11 +1,17 @@
 object = "fluid.multiarray"
 buffer = false
 digest = "Multichannel arrays"
-see-also =  []
+see-also =  ["fluid.bufcompose"]
 description = "An abstraction that assists in the management and creation of multichannel arrays."
 discussion = """
-This abstraction allows the creation of multichannel arrays. Note that it requires invoking via the [clone] object to work.
+This abstraction allows the creation of multichannel arrays. Note that it requires invoking via the [clone] object to work, where the number of instances is the number of 'channels'.
 """
+
+[inlets]
+
+[inlets.1]
+type="anything"
+description="Messages to all the underlying instances of arrays in the 'multiarray'."
 
 [arguments]
 
