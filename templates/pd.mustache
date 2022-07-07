@@ -86,9 +86,11 @@ under the European Union’s Horizon 2020 research and innovation programme
     	<h2>Arguments</h2>
 		{{ #arguments }}
       	<h3 class="argument_name">{{ name }}<span class="type"> [{{ type }}]</span></h3> 
+		{{ #optional }}
       	<div class="optional">Optional</div> 
-      	{{ #default }}
-      	<span class="defaultval"> (default: {{ value }})</span>
+      	{{ /optional }}
+		{{ #default }}
+		<span class="defaultval"> (default: {{ default }})</span>
 	  	{{ /default }}
     	<div class="description">{{ description }}</div>
     	{{ /arguments }}
