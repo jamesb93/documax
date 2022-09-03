@@ -36,10 +36,7 @@ const options = commandLineArgs([
 ])
 
 const dir = options.output;
-const cce = options.environment;
 const templatePath = options.template;
-const extensions = new Map([['max', '.maxref.xml']]);
-
 const insertDefault = (source, destination, key) => {
     if (!source) return
     Object.entries(source).forEach(([k, v]) => {
