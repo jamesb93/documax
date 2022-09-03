@@ -7,8 +7,32 @@ const Mustache = require('mustache');
 const commandLineArgs = require('command-line-args')
 
 const options = commandLineArgs([
-    { name: 'output', alias: 'o', defaultValue: './output', type: String},
-    { name: 'output', alias: 'o', defaultValue: './output', type: String}
+    {
+        name: 'help',
+        alias: 'h',
+        type: Boolean,
+        description: 'Display usage guide.'
+    },
+    { 
+        name: 'input', 
+        alias: 'i',  
+        type: String,
+        description: 'An input directory of .toml files'
+    },
+    { 
+        name: 'output', 
+        alias: 'o', 
+        defaultValue: './output', 
+        type: String,
+        description: 'An output directory where the .maxref files will be generated'
+    },
+    {
+        name: 'template',
+        alias: 't',
+        defaultValue: 'max.mustache',
+        type: String,
+        description: 'A path to a mustache template.'
+    }
 ])
 
 const dir = options.output;
