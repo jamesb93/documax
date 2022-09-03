@@ -7,16 +7,13 @@ const Mustache = require('mustache');
 const commandLineArgs = require('command-line-args')
 
 const options = commandLineArgs([
-    { name: 'environment', alias: 'e', defaultValue: 'max', type: String},
+    { name: 'output', alias: 'o', defaultValue: './output', type: String},
     { name: 'output', alias: 'o', defaultValue: './output', type: String}
 ])
 
 const dir = options.output;
 const cce = options.environment;
-const extensions = new Map([
-    ['max', '.maxref.xml'],
-    ['pd', '.html']
-])
+const extensions = new Map([['max', '.maxref.xml']]);
 const sanitise = (data) => {
     // Messages
     let copy = data;
@@ -79,14 +76,15 @@ Mustache.escape = (text) => text; // escape maxref tags
 
 if (!fs.existsSync(dir)) { fs.mkdirSync(dir) };
 
-for (const config of configs) {
+configs.forEach(config => {
     const data = fs.readFileSync(config);
     const parsed = sanitise(toml.parse(data));
+    console.log(parsed)
     const ext = extensions.get(cce);
     const output = path.join(dir, path.parse(config).name + ext);
     fs.writeFileSync(output, Mustache.render(template, parsed))
     console.log('Wrote ' + output);
-}
+})
 
 
 

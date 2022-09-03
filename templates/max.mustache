@@ -1,157 +1,123 @@
 <?xml version='1.0' encoding='utf-8' standalone='yes'?>
 <?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
-<!--
-Part of the Fluid Corpus Manipulation Project (http://www.flucoma.org/)
-Copyright 2017-2019 University of Huddersfield.
-Licensed under the BSD-3 License.
-See license.md file in the project root for full license information.
-This project has received funding from the European Research Council (ERC)
-under the European Union’s Horizon 2020 research and innovation programme
-(grant agreement No 725899).
--->
-<c74object name='{{object}}' category='FluidCorpusManuipulation'>
-    <digest>{{ digest }}</digest>
-    <description>{{ description }}</description>
-    <discussion>
-        <h4><openfilelink filename="Fluid Corpus Manipulation Toolkit.maxpat">Open the Overview Patch</openfilelink></h4>
-        {{ discussion }}
-        <p>{{ object }} is part of the Fluid Decomposition Toolkit of the FluCoMa project. For more explanations, learning material, and discussions on its musicianly uses, visit <a href="http://www.flucoma.org/">flucoma.org</a>.</p>
-    </discussion>
-	<!--METADATA-->
+
+<c74object name='{{ object.name }}' category='{{ object.category }}' module='{{ object.module }}'>
+    <digest>{{ object.digest }}</digest>
+    <description>{{ object.description }}</description>
+    <discussion>{{ object.discussion }}</discussion>
+
 	<metadatalist>
-		<metadata name='author'>FluCoMa</metadata>
-		<metadata name='tag'>Fluid Decomposition</metadata>
-		<metadata name='tag'>corpus</metadata>
+		<metadata name='author'>{{ metadata.author }}</metadata>
+        {{ #metadata.tags }}
+		<metadata name='tag'>{{ . }}</metadata>
+        {{ /metadata.tags }}
 	</metadatalist>
 
-    {{! INLETS }}
+    <!-- INLETS -->
     <inletlist>
-    {{ #inlets }}
+        {{ #inlets }}
         <inlet id='{{ id }}' type='{{ type }}'>
-            <digest>
-            {{ digest }}
-            </digest>
-            <description>
-            {{ description }}
-            </description>
+            <digest>{{ digest }}</digest>
+            <description>{{ description }}</description>
         </inlet>
-    {{ /inlets }}
+        {{ /inlets }}
     </inletlist>
-    {{! INLETS }}
+    <!-- INLETS -->
 
-    {{! OUTLETS }}
+    <!-- OUTLETS -->
     <outletlist>
-    {{ #outlets }}
-        <outlet id='{{id}}' type='{{type}}'>
-            <digest>
-            {{ digest }}
-            </digest>
-            <description>
-            {{ description }}
-            </description>
+        {{ #outlets }}
+        <outlet id='{{ id }}' type='{{ type }}'>
+            <digest>{{ digest }}</digest>
+            <description>{{ description }}</description>
         </outlet>
-    {{ /outlets }}
+        {{ /outlets }}
     </outletlist>
-    {{! OUTLETS }}
+    <!-- OUTLETS -->
 
-    {{! ARGUMENTS }}
+    <!-- ARGUMENTS -->
     <objarglist>
     {{ #arguments }}
-        <objarg name='{{name}}' optional='{{optional}}' type='{{number}}'>
-            <digest>
-            {{ digest }}
-            </digest>
-            <description>
-            {{ description }}
-            </description>
-            {{ #default }}
-            <attributelist>
-                <attribute name='default' get='1' set='1' type='{{type}}' size='{{size}}' value='{{value}}' />
-            </attributelist>
-            {{ /default }}
+        <objarg name='{{ name }}' optional='{{ optional }}' type='{{ type }}'>
+            <digest>{{ digest }}</digest>
+            <description>{{ description }}</description>
         </objarg>
     {{ /arguments }}
     </objarglist>
-    {{! ARGUMENTS }}
+    <!-- ARGUMENTS -->
 
     <!--MESSAGES-->
     <methodlist>
 	{{ #messages }}
-    <method name='{{name}}'>
+    <method name='{{ name }}'>
         <arglist>
             {{ #args}}
-            <arg name='{{name}}' optional='{{optional}}' type='{{type}}' />
+            <arg 
+            name='{{ name }}' 
+            optional='{{ optional }}' 
+            type='{{ type }}' 
+            units = '{{ units }}'
+            />
             {{ /args }}
         </arglist>
-        <digest>
-        {{ msgdigest }}
-        </digest>
-        <description>
-        {{ msgdesc }}
-        {{ options }}
-        </description>
+        <digest>{{ digest }}</digest>
+        <description>{{ description }}</description>
     </method>
 	{{ /messages }}
-
-    {{ #buffer }}
-    <method name="bang">
-        <arglist />
-        <digest>
-        Trigger processing
-        </digest>
-        <description>
-        Extract data from the <at>source</at> <o>buffer~</o>, given the current values of <at>startframe</at>, <at>numframes</at>, <at>startchan</at> and <at>numchans</at>. 
-        </description>
-    </method>
-    <method name="buffer">
-        <arglist>
-        <!-- This should be true but isn't yet --> 
-        <!-- <arg name= "buffer" optional='0' type="symbol" />
-        <arg name= "start frame" optional='1' type="long" />
-        <arg name= "number of frames" optional='1' type="long" />
-        <arg name= "start channel" optional='1' type="long" />
-        <arg name= "number of channels" optional='1' type="long" /> -->
-        </arglist> 
-        <digest>
-        Set the source buffer~ and trigger processing
-        </digest>
-        <description>
-        Sets the value of <at>source</at><!-- and optionally <at>startframe</at>, <at>numframes</at>, <at>startchan</at>, <at>numchans</at>.--> Then processes as if <m>bang</m> had been called. 
-        </description>
-    </method>
-    {{ /buffer }}
 	</methodlist>
 	<!--MESSAGES-->
 
 	<!--ATTRIBUTES-->
 	<attributelist>
-    {{ #attributes }}
-        <attribute name='{{name}}' get='1' set='1' type='{{type}}' size='{{size}}'>
-        <digest> 
-        {{ digest }} 
-        </digest>
-        <description> 
-        {{ description }} 
-        </description>
+        {{ #attributes }}
+        <attribute 
+        name='{{ name }}' 
+        type='{{ type }}' 
+        size='{{ size }}'
+        get='1' set='1' 
+        >
+        <digest>{{ digest }}</digest>
+        <description>{{ description }}</description>
 
-        {{! if a value is set the default is supplied here as an additional attirbute list }}
-        {{#value}}
         <attributelist>
-        <attribute name='default' get='1' set='1' type='{{type}}' size='{{size}}' value='{{value}}'>
-        </attribute>
+            <attribute 
+            name='default' 
+            type='{{ default.type }}' 
+            size='{{ default.size }}' 
+            value='{{ default.value }}'
+            get='1' set='1' 
+            />
         </attributelist>
-        {{/value}}
-
         </attribute>
-    {{ /attributes }}
+        {{ /attributes }}
 	</attributelist>
 	<!--ATTRIBUTES-->
 
-	<!--RELATED-->
+	<!-- SEEALSO -->
 	<seealsolist>
-    {{ #see-also }}
-    <seealso name='{{.}}'/>
-    {{ /see-also }}
+        {{ #object.seealso }}
+        <seealso name='{{ . }}' />
+        {{ /object.seealso }}
 	</seealsolist>
-	<!--RELATED-->
+	<!-- SEEALSO -->
+
+    <!-- INLETS -->
+    <misc name="Input">
+        {{ #inlets }}
+        <entry name='{{ type }}'>
+            <description>{{ description }}</description>
+        </entry>
+        {{ /inlets }}
+    </misc> 
+    <!-- INLETS -->
+
+    <!-- OUTLETS -->
+    <misc name="Output">
+        {{ #outlets }}
+        <entry name='{{ type }}'>
+            <description>{{ description }}</description>
+        </entry>
+        {{ /outlets }}
+    </misc>
+    <!-- OUTLETS -->
 </c74object>
