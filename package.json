@@ -1,13 +1,14 @@
 {
-  "name": "manual_docs",
+  "name": "documax",
   "version": "1.0.0",
-  "description": "",
+  "description": "Generate Max XML references using TOML syntax.",
   "main": "index.js",
+  "bin": "./index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["documentation", "generation", "cli"],
+  "author": "James Bradbury",
   "license": "ISC",
   "dependencies": {
     "command-line-args": "^5.2.1",
