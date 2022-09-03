@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes'?>
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+<c74object name='yourspecialobject~' category='' module=''>
+    <digest>A very short digest of the object</digest>
+    <description>A short description</description>
+    <discussion>High level discussion of the object.
+
+Multiline strings with three quotes.
+</discussion>
+
+	<metadatalist>
+		<metadata name='author'>James Bradbury</metadata>
+		<metadata name='tag'>words</metadata>
+		<metadata name='tag'>that</metadata>
+		<metadata name='tag'>tag</metadata>
+		<metadata name='tag'>your</metadata>
+		<metadata name='tag'>reference</metadata>
+	</metadatalist>
+
+    <!-- INLETS -->
+    <inletlist>
+        <inlet id='0' type='signal'>
+            <digest>A signal inlet</digest>
+            <description>A signal inlet. Much like the <o>groove~</o> object</description>
+        </inlet>
+        <inlet id='1' type='anything'>
+            <digest>Anything, like a list.</digest>
+            <description>The description for this anything inlet</description>
+        </inlet>
+    </inletlist>
+    <!-- INLETS -->
+
+    <!-- OUTLETS -->
+    <outletlist>
+        <outlet id='0' type='signal'>
+            <digest>Signal output</digest>
+            <description>Outputs some signal innit</description>
+        </outlet>
+    </outletlist>
+    <!-- OUTLETS -->
+
+    <!-- ARGUMENTS -->
+    <objarglist>
+        <objarg name='collname' optional='true' type='symbol'>
+            <digest>argument digest 1</digest>
+            <description>argument description 1</description>
+        </objarg>
+        <objarg name='index' optional='false' type='int'>
+            <digest>argument digest 2</digest>
+            <description>argument description 2</description>
+        </objarg>
+    </objarglist>
+    <!-- ARGUMENTS -->
+
+    <!--MESSAGES-->
+    <methodlist>
+    <method name='range'>
+        <arglist>
+            <arg 
+            name='x' 
+            optional='0' 
+            type='float' 
+            units = ''
+            />
+            <arg 
+            name='y' 
+            optional='1' 
+            type='float' 
+            units = ''
+            />
+        </arglist>
+        <digest>Message digest</digest>
+        <description>Message description</description>
+    </method>
+	</methodlist>
+	<!--MESSAGES-->
+
+	<!--ATTRIBUTES-->
+	<attributelist>
+        <attribute 
+        name='interp' 
+        type='int' 
+        size='1'
+        get='1' set='1' 
+        >
+        <digest>attribute digest</digest>
+        <description>attribute description</description>
+
+        <attributelist>
+            <attribute 
+            name='default' 
+            type='int' 
+            size='1' 
+            value='0.5'
+            get='1' set='1' 
+            />
+        </attributelist>
+        </attribute>
+	</attributelist>
+	<!--ATTRIBUTES-->
+
+	<!-- SEEALSO -->
+	<seealsolist>
+        <seealso name='fluid.waveform~' />
+	</seealsolist>
+	<!-- SEEALSO -->
+
+    <!-- INLETS -->
+    <misc name="Input">
+        <entry name='signal'>
+            <description>A signal inlet. Much like the <o>groove~</o> object</description>
+        </entry>
+        <entry name='anything'>
+            <description>The description for this anything inlet</description>
+        </entry>
+    </misc> 
+    <!-- INLETS -->
+
+    <!-- OUTLETS -->
+    <misc name="Output">
+        <entry name='signal'>
+            <description>Outputs some signal innit</description>
+        </entry>
+    </misc>
+    <!-- OUTLETS -->
+</c74object>

@@ -37,6 +37,7 @@ const options = commandLineArgs([
 
 const dir = options.output;
 const cce = options.environment;
+const templatePath = options.template;
 const extensions = new Map([['max', '.maxref.xml']]);
 const sanitise = (data) => {
     // Messages
@@ -94,8 +95,8 @@ const sanitise = (data) => {
     return copy
 }
 
-const configs = fg.sync([`${cce}/*.toml`]);
-const template = fs.readFileSync(`./templates/${cce}.mustache`, 'utf8')
+const configs = fg.sync([`${options.input}/*.toml`]);
+const template = fs.readFileSync(templatePath, 'utf8')
 Mustache.escape = (text) => text; // escape maxref tags
 
 if (!fs.existsSync(dir)) { fs.mkdirSync(dir) };
@@ -103,9 +104,7 @@ if (!fs.existsSync(dir)) { fs.mkdirSync(dir) };
 configs.forEach(config => {
     const data = fs.readFileSync(config);
     const parsed = sanitise(toml.parse(data));
-    console.log(parsed)
-    const ext = extensions.get(cce);
-    const output = path.join(dir, path.parse(config).name + ext);
+    const output = path.join(dir, path.parse(config).name + '.maxref.xml');
     fs.writeFileSync(output, Mustache.render(template, parsed))
     console.log('Wrote ' + output);
 })
