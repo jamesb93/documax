@@ -1,10 +1,9 @@
-
 const toml = require('toml');
 const fs = require('fs');
 const path = require('path');
 const fg = require('fast-glob');
 const Mustache = require('mustache');
-const commandLineArgs = require('command-line-args')
+const commandLineArgs = require('command-line-args');
 
 const options = commandLineArgs([
     {
