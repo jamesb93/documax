@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const toml = require('toml');
 const fs = require('fs');
 const path = require('path');
