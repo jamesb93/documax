@@ -42,39 +42,42 @@ const insertDefault = (source, destination, key) => {
     Object.entries(source).forEach(([k, v]) => {
         let temp = v;
         temp[key] = k;
-        destination.push(temp)
+        destination.push(temp);
     })
 }
 const sanitise = (data) => {
     let copy = data;
-    let messages = []
-    let attributes = []
-    let arguments = []
-    let inlets = []
-    let outlets = []
+    let messages = [];
+    let attributes = [];
+    let arguments = [];
+    let inlets = [];
+    let outlets = [];
     insertDefault(data.messages, messages, 'name');
     insertDefault(data.arguments, arguments, 'name');
     insertDefault(data.inlets, inlets, 'id');
     insertDefault(data.outlets, outlets, 'id');
-    copy.messages = messages
-    copy.attributes = attributes
-    copy.arguments = arguments
-    copy.inlets = inlets
-    copy.outlets = outlets
-    return copy
+    insertDefault(data.attributes, attributes, 'name');
+    copy.messages = messages;
+    copy.attributes = attributes;
+    copy.arguments = arguments;
+    copy.inlets = inlets;
+    copy.outlets = outlets;
+    return copy;
 }
 
 const configs = fg.sync([`${options.input}/*.toml`]);
-const template = fs.readFileSync(templatePath, 'utf8')
+const template = fs.readFileSync(templatePath, 'utf8');
 Mustache.escape = (text) => text; // escape maxref tags
 
-if (!fs.existsSync(dir)) { fs.mkdirSync(dir) };
+if (!fs.existsSync(dir)) { 
+    fs.mkdirSync(dir);
+};
 
 configs.forEach(config => {
     const data = fs.readFileSync(config);
     const parsed = sanitise(toml.parse(data));
     const output = path.join(dir, path.parse(config).name + '.maxref.xml');
-    fs.writeFileSync(output, Mustache.render(template, parsed))
+    fs.writeFileSync(output, Mustache.render(template, parsed));
     console.log('Wrote ' + output);
 })
 
