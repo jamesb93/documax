@@ -80,7 +80,3 @@ configs.forEach(config => {
     fs.writeFileSync(output, Mustache.render(template, parsed));
     console.log('Wrote ' + output);
 })
-
-
-
-
